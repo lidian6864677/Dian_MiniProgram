@@ -1,0 +1,24 @@
+<view class='container'>
+  <view class='usermotto'>
+    <text class='user-motto'>{{motto}}</text>
+  </view>
+  <view wx:for="{{array}}" wx:for-item="item" wx:key="index">
+    <text id="messageIndex - {{index}}">{{item.message}}---{{index}}</text>
+  </view>
+
+  <!-- for 循环-->
+  <!-- <view wx:for = "{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i" wx:key="index">
+    <view wx:for = "{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item = "j" wx:key="index1">
+      <text wx:if="{{i <= j}}">
+        {{i}} * {{j}} = {{i*j}}
+      </text>
+    </view>
+  </view> -->
+  
+  <!-- <block wx:for = "{{[1,2,3,4,5]}}" wx:key = "key">
+    <view>{{index}}</view>
+    <view>{{item}}</view>
+    <view>-----</view>
+  </block> -->
+
+</view>
