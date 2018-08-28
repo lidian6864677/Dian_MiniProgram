@@ -1,10 +1,19 @@
+<import src="../common/template_item.wxml"/>
 <view class='container'>
+<include src="../common/header.wxml"/>
   <view class='usermotto'>
     <text class='user-motto'>{{motto}}</text>
   </view>
   <view wx:for="{{array}}" wx:for-item="item" wx:key="index">
     <text id="messageIndex - {{index}}">{{item.message}}---{{index}}</text>
   </view>
+
+
+
+
+ <template is="item" data="{{text: 'index page'}}"/>
+ <include src = "../common/footer.wxml"/>
+
 
   <!-- for 循环-->
   <!-- <view wx:for = "{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i" wx:key="index">
@@ -20,5 +29,6 @@
     <view>{{item}}</view>
     <view>-----</view>
   </block> -->
+ 
 
 </view>
