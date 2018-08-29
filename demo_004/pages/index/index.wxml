@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <map id='map' longitude='121.398325' latitude='31.131877' markers='{{markers}}' scale='17' style='width:100%; height:200px'></map>
+
+</view>
