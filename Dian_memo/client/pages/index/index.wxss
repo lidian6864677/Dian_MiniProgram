@@ -1,129 +1,251 @@
-/**index.wxss**/
-page {
-    background: #F6F6F6;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+@import "../../calendar/calendar.wxss";
+
+.wrapper {
+    padding-bottom: 160rpx;
 }
 
-.userinfo, .uploader, .tunnel {
-    margin-top: 40rpx;
-    height: 140rpx;
-    width: 100%;
-    background: #FFF;
-    border: 1px solid rgba(0, 0, 0, .1);
-    border-left: none;
-    border-right: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    transition: all 300ms ease;
+.show-date {
+    margin: 30rpx 0;
+    text-align: center;
+    font-size: 60rpx;
+    font-weight: lighter;
+    color: #E14848
 }
 
-.userinfo-avatar {
+.common-list .item {
+    overflow: hidden
+}
+.common-list .item:active {
+    background: #333333
+}
+.common-list .item .inner {
+    position: relative;
+    border-top: 2rpx solid #333;
+    margin: 0 40rpx;
+    padding: 20rpx 0;
+    min-height: 100rpx;
+}
+
+.common-list .header {
+    border-top: 2rpx solid #333;
+    margin: 0 40rpx;  
+    padding: 20rpx 0;
+    color: #AAA;
+    font-size: 30rpx;
+}
+
+.common-list .item .icon {
+    position: absolute;
+    left: 0;
+    top: 20rpx;
     width: 100rpx;
     height: 100rpx;
-    margin: 20rpx;
-    border-radius: 50%;
 }
-
-.userinfo-nickname {
+.common-list .item .inner.with-check .checker {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 10rpx;
+    bottom: 10rpx;
+    width: 80rpx;
+    border-right: 2rpx solid #333;
+}
+.common-list .item .inner.with-check .icon {
+    left: 100rpx;
+}
+.common-list .item .content {
+    margin-left: 130rpx;
+}
+.common-list .item .inner.with-check .content{
+    margin-left: 230rpx;
+}
+.common-list .item .title {
+    display: block;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    font-weight: lighter;
     font-size: 32rpx;
-    color: #007AFF;
-    background-color: white; 
+    margin-top: 30rpx;
 }
 
-.userinfo-nickname::after {
-  border: none;
-}
 
-.uploader, .tunnel {
-    height: auto;
-    padding: 0 0 0 40rpx;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
-}
-
-.uploader-text, .tunnel-text {
-    width: 100%;
-    line-height: 52px;
-    font-size: 34rpx;
-    color: #007AFF;
-}
-
-.uploader-container {
-    width: 100%;
-    height: 400rpx;
-    padding: 20rpx 20rpx 20rpx 0;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-}
-
-.uploader-image {
-    width: 100%;
-    height: 360rpx;
-}
-
-.tunnel {
-    padding: 0 0 0 40rpx;
-}
-
-.tunnel-text {
-    position: relative;
-    color: #222;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-}
-
-.tunnel-text:first-child {
-    border-top: none;
-}
-
-.tunnel-switch {
-    position: absolute;
-    right: 20rpx;
-    top: -2rpx;
-}
-
-.disable {
-    color: #888;
-}
-
-.service {
+.mask {
     position: fixed;
-    right: 40rpx;
-    bottom: 40rpx;
-    width: 140rpx;
-    height: 140rpx;
-    border-radius: 50%;
-    background: linear-gradient(#007AFF, #0063ce);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    transition: all 300ms ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1100;
 }
 
-.service-button {
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600rpx;
+    min-height: 200rpx;
+    margin-left: -300rpx;
+    margin-top: -200rpx;
+    background-color: #FFF;
+    border-radius: 10rpx;
+    z-index: 1200;
+    color: #555;
+}
+.modal .content {
+    overflow: hidden;
+    padding: 40rpx;
+    font-size: 38rpx;
+    margin-bottom: 100rpx;
+}
+.modal .content .input {
+    padding: 20rpx;
+    font-size: 38rpx;
+    border: 2prx solid #E14848
+}
+
+
+.modal .footer {
     position: absolute;
-    top: 40rpx;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100rpx;
+    border-radius: 0 0 10rpx 10rpx;
+    overflow: hidden;
+}
+.modal .footer .btn {
+    height: 100rpx;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36rpx;
+    background-color: #EEE;
+    color: #555;
+}
+.modal .footer .btn:active {
+    background-color: #DDD;
 }
 
-.service:active {
-    box-shadow: none;
+.modal .level {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    padding: 20rpx;
+}
+.modal .level icon {
+    margin-left: 20rpx;
 }
 
-.request-text {
+/*action sheet*/
+.actionItem  {
+    color: #555;
+    font-size: 36rpx;
+}
+.actionItem.cancel {
+    color: #888
+}
+
+
+/*update panel style*/
+.updatePanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    overflow: hidden;
+    z-index: 1000
+}
+.updatePanel .title {
+    font-size: 48rpx;
+    font-weight: lighter;
+    text-align: center;
     padding: 20rpx 0;
-    font-size: 24rpx;
-    line-height: 36rpx;
-    word-break: break-all;
+    margin-bottom: 20rpx;
+}
+.updatePanel input,
+.updatePanel textarea {
+    background: #222;
+    padding: 20rpx;
+    font-size: 36rpx;
+    width: auto;
+    color: #CCC;
+}
+.updatePanel textarea {
+    border-top: 2rpx solid #333;
+}
+
+.updatePanel .level {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    bottom: 100rpx;
+    border-top: 2rpx solid #333;
+    padding: 20rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.updatePanel .level .item {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin: 0 60rpx;
+}
+.updatePanel .footer {
+    position: absolute;
+    display: flex;
+    left: 0;
+    height: 100rpx;
+    right: 0;
+    bottom: 0;
+    border-top: 2rpx solid #333;
+}
+.updatePanel .footer .btn {
+    flex: 1;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 36rpx;
+    color: #DDD;
+}
+.updatePanel .footer .btn:active {
+    background: #333;
+}
+.updatePanel .footer .btn.primary {
+    background: #E14848;
+}
+.updatePanel .footer .btn.primary:active {
+    background: #D64343
+}
+
+.item1{
+  width:100rpx;
+  height:100rpx;
+  position: absolute;
+  /* bottom:2rpx; */
+  
+  right: 0;
+  /* background-color: white; */
+}
+.item2{
+  width:230rpx;
+  height:230rpx;
+  left: 20;
+}
+.item1.icon{
+  width:100%;
+  height:100%;
+  
+}
+.icon{
+  width:100%;
+  height:100%;
+  top: 20;
 }

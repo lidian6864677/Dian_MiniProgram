@@ -1,0 +1,32 @@
+.show-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40rpx 20rpx;
+}
+.show-item .title {
+    width: 150rpx;
+    color: #DDD
+}
+.show-item .title,
+.show-item .content {
+    font-size: 32rpx;
+    width: 100%;
+}
+
+.ball {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+}
+.item2{
+  width:230rpx;
+  height:230rpx;
+  left: 20;
+}
+.icon{
+  width:100%;
+  height:100%;
+  top: 20;
+}
