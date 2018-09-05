@@ -1,2 +1,28 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+
+
+<view class='userInfo'>
+  <view class='userInfo-avatar'>
+  <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName"></open-data>
+  <!-- 需要使用 button 来授权登录 -->
+  <!-- <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button> -->
+  <!-- <view wx:else>请升级微信版本</view> -->
+</view>
+
+<view class="weui-cells__title">个人设置</view>
+<view class="weui-cells">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view>标题文字</view>
+    </view>
+    <view class="weui-cell__ft">说明文字</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view>标题文字</view>
+    </view>
+    <view class="weui-cell__ft">说明文字</view>
+  </view>
+</view>

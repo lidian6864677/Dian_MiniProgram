@@ -1,6 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
+    var that = this
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -8,8 +9,34 @@ App({
 
     // 登录
     wx.login({
+      // 发送 res.code 到后台换取 openId, sessionKey, unionId
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          console.log(res)
+          /// 发起网络请求
+          wx.request({
+            url: 'https://api.techfoco.com/account/wxlogin',
+            data: {
+              code: res.code
+            },
+            header: {
+              'Content-Type': 'application/json'
+            },
+            success: function(res) {
+              var res = JSON.parse(res.data)
+              console.log(res)
+              wx.setStorage({
+                key: 'openid',
+                data: res.openid,
+              });/// c存储openod
+              that.globalData.openid = res.openid
+
+
+            }
+          })
+        } else {
+          console.log("登录失败" + res.errMsg)
+        }
       }
     })
     // 获取用户信息

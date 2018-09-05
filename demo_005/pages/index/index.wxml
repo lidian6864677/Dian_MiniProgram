@@ -1,14 +1,22 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="userinfo-nickname">{{userInfo.province}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class='doc-container'>
+  <view class='doc-title'>今日精选</view>
+  <block wx:for="{{feeds}}" wx:key="{{item.ArticleId}}">
+    <view class='list' data-page='{{item}}' bindtap='tapItems'>
+      <view class='view_preInfo'>
+        <text class='list_preInfo'>{{item.CreateDateTime}} / {{item.ArticleAuthor}}</text>
+      </view>
+      <text class='list_title'>{{item.ArticleTitle}}</text>
+      <view>
+        <block wx:for="{{item.Tags}}" wx:key="{{item.TagName}}">
+        <text class='lsit_tag' style='border: solid 1px{{item.backgroundColor}};'>{{item.TagName}}</text>
+        </block>
+      </view>
+
+    </view>
+
+
+
+  </block>
+
 </view>

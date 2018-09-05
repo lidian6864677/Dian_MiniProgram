@@ -1,1 +1,23 @@
 /* pages/me/me.wxss */
+
+.userInfo {
+  width: 750rpx;
+  height: 320rpx;
+  color: #999;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userInfo-avatar {
+  overflow: hidden;
+  display: block;
+  margin: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #fff;
+  width: 160rpx;
+  height: 160rpx;
+}
