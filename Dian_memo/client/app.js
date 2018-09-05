@@ -20,7 +20,8 @@ App({
     }
   },
   onLaunch: function () {
-    // qcloud.setLoginUrl(config.service.loginUrl)
+    console.log("登录啊" + config.service.loginUrl)
+    qcloud.setLoginUrl(config.service.loginUrl)
   },
   globalData: {
     userInfo: null
@@ -28,7 +29,6 @@ App({
 
   //自定义配置
   settings: {
-    debug: true, //是否调试模式
-    moreLink: 'http://github.com/oopsguy'
+    debug: true //是否调试模式
   }
 }); 
