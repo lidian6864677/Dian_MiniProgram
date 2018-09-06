@@ -308,11 +308,11 @@ Page({
           
         },
 
-        fail: function(e) {
-          util.showModel('上传图片失败')
+        fail: function(err) {
+          util.showModel('登录错误', err.message)
         },
         complete: function(e){
-          that.saveData()
+          that.updataFile()
         }
 
       })
@@ -321,8 +321,58 @@ Page({
       showModal.call(this, '请填写事项内容');
     }
   },
+  updataFile(){
+    util.showBusy('处理中')
+    console.log("调用接口")
+    const {
+      todoInputValue,
+      todoTextAreaValue,
+      levelSelectedValue,
+      tempFilePaths,
+      imgUrl
+    } = this.data;
+    const {
+      year,
+      month,
+      date
+    } = this.data.data.selected;
+    var that = this
+    wx.request({
+      url: "http://192.168.1.108:8888/calendar/insert",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      data: {
+        memoTitle: todoInputValue,
+        memoConcent: todoTextAreaValue,
+        memoPic: imgUrl,
+        memoLevel: levelSelectedValue,
+        mattersDate: year + "-" + month + '-' + date,
+        addDate: year + "-" + month + '-' + date
+      },
+      success(result) {
+        console.log("chenggon： " + result)
+        util.showSuccess('成功')
+        that.saveData()
+      },
+      fail(err) {
+        util.showModel('登录错误', err.message)
+        // opts.fail(err)
+      },
+      complete: function (res) {
+        console.log("接口错误")
+        if (res == null || res.data == null) {
+          util.showModel('保存失败',res.errMsg)
+          return;
+        }
+      }
+       
+    })
+  },
+
   saveData() {
-    console.log("正在保存")
+    console.log("保存本地")
     const {
       todoInputValue,
       todoTextAreaValue,
@@ -338,7 +388,7 @@ Page({
     let promise = new DataService({
       title: todoInputValue,
       tempFilePaths: tempFilePaths,
-      imgUrl:imgUrl,
+      imgUrl: imgUrl,
       content: todoTextAreaValue,
       level: levelSelectedValue,
       year: year,
@@ -354,11 +404,15 @@ Page({
         levelSelectedValue: LEVEL.normal,
         todoInputValue: '',
         tempFilePaths: [],
-        imgUrl:''
+        imgUrl: ''
       });
       loadItemListData.call(this);
     })
-    closeUpdatePanel.call(this);
+        
+        closeUpdatePanel.call(this);
+
+
+    
   },
 
   //批量删除事件
