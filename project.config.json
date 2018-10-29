@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
 	"appid": "wx48bc69a9612acbbf",
-	"projectname": "Dian_mini",
+	"projectname": "Dian_wx",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
