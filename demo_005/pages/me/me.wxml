@@ -23,6 +23,6 @@
     <view class="weui-cell__bd">
       <view>标题文字</view>
     </view>
-    <view class="weui-cell__ft">说明文字</view>
+    <view class="weui-cell__ft">文字</view>
   </view>
 </view>
