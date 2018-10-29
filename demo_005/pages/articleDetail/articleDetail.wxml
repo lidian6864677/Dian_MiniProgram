@@ -1,0 +1,6 @@
+<view class="doc-container">
+  <view class="rich-text-div">
+    <text class="article-title">{{article.Title}}</text>
+    <rich-text nodes="{{myRich}}"></rich-text>
+  </view>
+</view>

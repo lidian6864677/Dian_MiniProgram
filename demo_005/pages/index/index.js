@@ -7,17 +7,17 @@ Page({
     page: 1
   },
   onLoad: function() {
-    var that=this
+    var that = this
     this.getData(that.data.page)
   },
-  onReachBottom:function(){
+  onReachBottom: function() {
     wx.showLoading({
       title: '加载更多',
     })
     var that = this
     this.getData(that.data.page)
-
   },
+
   getData: function(page) {
     if (page == 1) {
       wx.showLoading({
@@ -31,7 +31,7 @@ Page({
       header: {
         'content-Type': 'application/json'
       },
-      
+
       success: function(res) {
         var res = JSON.parse(res.data)
         if (that.data.page > 1) {
@@ -58,12 +58,28 @@ Page({
         if (page >= 1) {
           wx.hideLoading()
         } else {
+          wx.stopPullDownRefresh()
 
         }
       }
     })
   },
-  tapItem: function(event){
+  tapItem: function(event) {
+    var that = this
+    var article = event.currentTarget.dataset.page
+    // if (article.IsWeiXinArticle){
+    //   wx.navigateTo({
+    //     url: '../../pages/wxDefault/wxDefault',
+    //   })
+    // }else{
+      wx.navigateTo({
+        url: '../../pages/articleDetail/articleDetail?id=' + article.ArticleId,
+      })
+    // }
+
+    console.log(event)
+
+
     // var that = this
     // var article = event.current
 

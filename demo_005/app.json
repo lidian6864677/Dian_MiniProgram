@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/fav/fav",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/articleDetail/articleDetail",
+    "pages/wxDefault/wxDefault"
   ],
   "window": {
     "backgroundTextStyle": "light",

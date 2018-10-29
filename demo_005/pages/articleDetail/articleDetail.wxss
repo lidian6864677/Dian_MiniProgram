@@ -1,0 +1,9 @@
+/* pages/articleDetail.wxss */
+
+.rich-text-div {
+  padding: 10px;
+}
+
+.article-title {
+  color: cornflowerblue;
+}
